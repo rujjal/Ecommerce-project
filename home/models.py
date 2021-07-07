@@ -25,6 +25,19 @@ class SubCategory(models.Model):
 	def __str__(self):
 		return self.title
 
+	def get_subcat_url(self):
+		return reverse("home:subcategory", kwargs = {'slug':self.slug})
+
+class Brand(models.Model):
+	title = models.CharField(max_length = 200)
+	description = models.TextField(blank = True)
+	slug = models.CharField(max_length = 500)
+	image = models.TextField(blank = True, null = True)
+
+	def __str__(self):
+		return self.title
+
+
 class Item(models.Model):
 	title = models.CharField(max_length = 500)
 	slug = models.CharField(max_length = 500)

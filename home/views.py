@@ -8,18 +8,29 @@ from .models import *
 # 	view = {"value":"Hello World"}
 # 	return render(request,'index.html',view)
 
-class BaseView(View):
+class BaseViews(View):
 	views = {}
 
 
-class HomeView(BaseView):
+class HomeView(BaseViews):
 	def get(self,request):
 		self.views['items'] = Item.objects.all()
+		self.views['sale_items'] = Item.objects.filter(labels = 'sale')
 		self.views['category'] = Category.objects.all()
 		self.views['sliders'] = Slider.objects.all()
 		self.views['subcategory'] = SubCategory.objects.all()
 		self.views['ad'] = Ad.objects.all()
+		self.views['brands'] = Brand.objects.all()
 
 		return render(request, 'index.html', self.views)
+
+
+class SubCategoryView(BaseViews):
+	def get(self,request,slug):
+		slug_id = SubCategory.objects.get(slug = slug).id
+		self.views['subcat_items'] = Item.objects.filter(subcategory_id = slug_id)
+
+		return render(request, 'index.html', self.views)
+
 
 
