@@ -78,4 +78,18 @@ class Slider(models.Model):
 		return self.name
 
 
+class Review(models.Model):
+	product = models.CharField(max_length = 400)
+	name = models.CharField(max_length = 500)
+	email = models.EmailField(max_length = 300)
+	comment = models.TextField(blank = True)
+	date = models.DateTimeField(auto_now = True)
+
+	def __str__(self):
+		return self.name
+
+
+
+
+
 

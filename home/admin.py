@@ -9,4 +9,5 @@ admin.site.register(Item)
 admin.site.register(Ad)
 admin.site.register(Slider)
 admin.site.register(Brand)
+admin.site.register(Review)
 
