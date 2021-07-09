@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 STATUS =(('active','active'),('inactive','inactive'))
@@ -53,6 +54,9 @@ class Item(models.Model):
 
 	def __str__(self):
 		return self.title 
+
+	def get_product_url(self):
+		return reverse("home:detail", kwargs = {'slug':self.slug})
 
 class Ad(models.Model):
 	name = models.CharField(max_length = 200)

@@ -68,7 +68,7 @@
 										<ul>
 											{% for subcat in subcategory %}
 											{% if cat.id == subcat.category_id %}
-											<li><a href="#">{{ subcat.title }} </a></li>
+											<li><a href="{{subcat.get_subcat_url}}">{{ subcat.title }} </a></li>
 											{% endif %}
 											{% endfor %}
 											
@@ -117,13 +117,13 @@
 										<div class="productinfo text-center">
 											<img src="{{item.images.url}}" alt="" />
 											<h2>${{item.price}}</h2>
-											<p>{{item.title}}</p>
+											<a href = "{{item.get_product_url}}"><p>{{item.title}}</p></a>
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
 												<h2>${{item.price}}</h2>
-												<p>{{item.title}}</p>
+												<a href = "{{item.get_product_url}}"><p>{{item.title}}</p></a>
 												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
 										</div>
@@ -440,7 +440,7 @@
 												<div class="productinfo text-center">
 													<img src="{{sale.images.url}}" alt="" />
 													<h2>${{sale.discounted_price}}</h2>
-													<p>{{sale.title}}</p>
+													<a href = "{{sale.get_product_url}}"><p>{{sale.title}}</p></a>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 												</div>
 												
